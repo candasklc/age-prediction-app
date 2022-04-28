@@ -7,15 +7,17 @@ import { NameObject } from 'src/app/interfaces/name-object';
   styleUrls: ['./main-component.component.scss']
 })
 export class MainComponentComponent implements OnInit {
-  public addedNames: NameObject[] = []
-
+  public addedNames: NameObject[] = [];
+  public theListSortedByName: NameObject[] = [];
+  public theListSortedByAge: NameObject[] = [];
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  addNewName(newPerson: NameObject) {
-    this.addedNames.push(newPerson);
-    console.log(this.addedNames)
+  addNewName(newName: NameObject): void {
+    this.addedNames.push(newName);
+    this.theListSortedByName = [...this.addedNames];
+    this.theListSortedByAge = [...this.addedNames];
   }
 }

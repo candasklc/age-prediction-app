@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { NameObject } from 'src/app/interfaces/name-object';
 
 @Component({
@@ -6,12 +6,16 @@ import { NameObject } from 'src/app/interfaces/name-object';
   templateUrl: './alphabetical-sorted-list.component.html',
   styleUrls: ['./alphabetical-sorted-list.component.scss']
 })
-export class AlphabeticalSortedListComponent implements OnInit {
-  @Input() addedNames: NameObject[] = []
+export class AlphabeticalSortedListComponent implements OnChanges {
+  @Input() addedNames: NameObject[] = [];
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+    this.sortList();
+  }
+  private sortList(): void {
+    this.addedNames.sort((a, b) => a.name.localeCompare(b.name));
   }
 
 }

@@ -1,7 +1,9 @@
 <app-add-name (newNameEvent)="addNewName($event)"></app-add-name>
 <section>
   <app-alphabetical-sorted-list
-    [addedNames]="addedNames"
+    [addedNames]="theListSortedByName"
   ></app-alphabetical-sorted-list>
-  <app-list-sorted-by-age [addedNames]="addedNames"></app-list-sorted-by-age>
+  <app-list-sorted-by-age
+    [addedNames]="theListSortedByAge"
+  ></app-list-sorted-by-age>
 </section>
