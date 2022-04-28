@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { NameObject } from 'src/app/interfaces/name-object';
 
 @Component({
   selector: 'app-list-sorted-by-age',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-sorted-by-age.component.scss']
 })
 export class ListSortedByAgeComponent implements OnInit {
+  @Input() addedNames: NameObject[] = [];
 
   constructor() { }
 

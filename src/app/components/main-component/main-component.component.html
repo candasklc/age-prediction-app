@@ -1,3 +1,5 @@
-<app-add-name></app-add-name>
-<app-alphabetical-sorted-list></app-alphabetical-sorted-list>
-<app-list-sorted-by-age></app-list-sorted-by-age>
+<app-add-name (newNameEvent)="addNewName($event)"></app-add-name>
+<app-alphabetical-sorted-list
+  [addedNames]="addedNames"
+></app-alphabetical-sorted-list>
+<app-list-sorted-by-age [addedNames]="addedNames"></app-list-sorted-by-age>

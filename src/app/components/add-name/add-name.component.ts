@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { PersonInfo } from 'src/app/interfaces/person-info';
+import { Output, EventEmitter } from '@angular/core';
+import { NameObject } from 'src/app/interfaces/name-object';
 import { DataServiceService } from 'src/app/services/data-service.service';
-
 @Component({
   selector: 'app-add-name',
   templateUrl: './add-name.component.html',
   styleUrls: ['./add-name.component.scss']
 })
 export class AddNameComponent implements OnInit {
-  public name = '';
-  public addedPerson: PersonInfo = {
+  @Output() newNameEvent = new EventEmitter<NameObject>();
+  public nameInput = '';
+  public addedNameObject: NameObject = {
     name: '',
     age: 0,
     count: 0
@@ -22,8 +23,9 @@ export class AddNameComponent implements OnInit {
   }
 
   onSubmit() {
-    this.dataService.getAgeResults(this.name).subscribe((data) => {
-      this.addedPerson = data;
+    this.dataService.getAgeResults(this.nameInput).subscribe((data) => {
+      this.addedNameObject = data;
+      this.newNameEvent.emit(this.addedNameObject);
     });
   }
 
