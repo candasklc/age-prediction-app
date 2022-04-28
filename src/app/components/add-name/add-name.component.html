@@ -1,8 +1,9 @@
 <mat-card>
-  <form class="example-form">
+  <form (submit)="onSubmit()">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Name:</mat-label>
-      <input matInput value="" />
+      <input matInput type="text" name="name" [(ngModel)]="name" />
     </mat-form-field>
   </form>
+  <button mat-raised-button (click)="onSubmit()">Add</button>
 </mat-card>
