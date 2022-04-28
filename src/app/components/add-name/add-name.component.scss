@@ -1,0 +1,11 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+    padding: 0;
+    .addBtn{
+        width: 200px;
+    }
+}

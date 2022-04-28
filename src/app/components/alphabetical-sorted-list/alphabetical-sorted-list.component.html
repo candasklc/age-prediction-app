@@ -1,7 +1,7 @@
-<mat-card>
-  <mat-list role="list" *ngFor="let x of addedNames">
-    <mat-list-item role="listitem"
-      >{{ x.name }} - {{ x.age }} - {{ x.count }}</mat-list-item
-    >
+<mat-card class="wrapper">
+  <mat-list class="list" role="list" *ngFor="let x of addedNames">
+    <mat-list-item role="listitem">
+      {{ x.name }} - {{ x.age }} - {{ x.count }}
+    </mat-list-item>
   </mat-list>
 </mat-card>
