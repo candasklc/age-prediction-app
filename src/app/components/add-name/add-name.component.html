@@ -1,10 +1,12 @@
 <mat-card class="wrapper">
   <h2>Age Prediction Application</h2>
-  <form class="form" (submit)="onSubmit()">
+  <form class="form" (submit)="onSubmit(nameInput)">
     <mat-form-field class="form-field" appearance="fill">
       <mat-label>Name:</mat-label>
       <input matInput type="text" name="name" [(ngModel)]="nameInput" />
     </mat-form-field>
   </form>
-  <button class="addBtn" mat-raised-button (click)="onSubmit()">Add</button>
+  <button class="addBtn" mat-raised-button (click)="onSubmit(nameInput)">
+    Add
+  </button>
 </mat-card>

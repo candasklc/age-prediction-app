@@ -8,6 +8,7 @@ import { NameObject } from 'src/app/interfaces/name-object';
 })
 export class ListSortedByAgeComponent implements OnChanges {
   @Input() addedNames: NameObject[] = [];
+  public columnsToDisplay: string[] = ['name', 'age', 'count'];
 
   constructor() { }
 

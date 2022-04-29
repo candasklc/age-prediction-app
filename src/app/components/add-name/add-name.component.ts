@@ -16,17 +16,29 @@ export class AddNameComponent implements OnInit {
     count: 0
   }
 
-
   constructor(private dataService: DataServiceService) { }
 
   ngOnInit(): void {
   }
 
-  onSubmit() {
-    this.dataService.getAgeResults(this.nameInput).subscribe((data) => {
-      this.addedNameObject = data;
-      this.newNameEvent.emit(this.addedNameObject);
-    });
+  public onSubmit(name: string): void {
+    if (this.nameValidator(name)) {
+      this.nameInput = '';
+      this.dataService.getAgeResults(name).subscribe((data) => {
+        this.addedNameObject = data;
+        this.newNameEvent.emit(this.addedNameObject);
+      });
+    }
+  }
+  private nameValidator(name: string): boolean {
+    if (name === '') {
+      alert('Please enter a name.');
+    } else if (name.length < 2 || /\d/.test(name)) {
+      alert('Please enter a valid name.');
+    } else {
+      return true;
+    }
+    return false;
   }
 
 }

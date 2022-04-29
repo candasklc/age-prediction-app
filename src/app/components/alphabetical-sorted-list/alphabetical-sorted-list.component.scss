@@ -1,8 +1,26 @@
 .wrapper{
-    background-color: antiquewhite;
-    min-height: 70vh;
+    min-height: 65vh;
     padding: 0;
-    .list{
-        margin: 8px;
+    margin: 4px;
+    .table {
+        width: 100%;
+    }
+    .mat-column-name{
+        text-transform: capitalize;
+    }
+    .mat-column-age, .mat-column-count {
+        text-align: center;
+        width: 100px;
+    }
+    .rows:nth-child(1) {
+        background-color: #C9B037;
+    }
+    
+    .rows:nth-child(2) {
+        background-color: #D7D7D7;
+    }
+    
+    .rows:nth-child(3) {
+        background-color: #6A3805;
     }
 }
