@@ -8,7 +8,7 @@ import { NameObject } from 'src/app/interfaces/name-object';
 })
 export class AlphabeticalSortedListComponent implements OnChanges {
   @Input() addedNames: NameObject[] = [];
-  public columnsToDisplay: string[] = ['name', 'age', 'count'];
+  public columnsToDisplay: string[] = ['name', 'age'];
 
   constructor() { }
 

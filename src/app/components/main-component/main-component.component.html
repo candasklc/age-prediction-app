@@ -1,4 +1,7 @@
-<app-add-name (newNameEvent)="addNewName($event)"></app-add-name>
+<app-add-name
+  [allNames]="addedNames"
+  (newNameEvent)="addNewName($event)"
+></app-add-name>
 <section>
   <app-alphabetical-sorted-list
     [addedNames]="theListSortedByName"

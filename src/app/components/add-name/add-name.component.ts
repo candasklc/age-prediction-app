@@ -1,5 +1,5 @@
 import { error } from '@angular/compiler/src/util';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { catchError } from 'rxjs';
 import { NameObject } from 'src/app/interfaces/name-object';
@@ -11,6 +11,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class AddNameComponent implements OnInit {
   @Output() newNameEvent = new EventEmitter<NameObject>();
+  @Input() public allNames: NameObject[] = [];
   private specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   public nameInput = '';
   public addedNameObject: NameObject = {
@@ -39,6 +40,8 @@ export class AddNameComponent implements OnInit {
       alert('Please enter a name.');
     } else if (name.length < 2 || /\d/.test(name) || this.specialChars.test(name)) {
       alert('Please enter a valid name.');
+    } else if (this.allNames.some(i => i.name.includes(name))) {
+      alert('The name is already added.');
     } else {
       return true;
     }
