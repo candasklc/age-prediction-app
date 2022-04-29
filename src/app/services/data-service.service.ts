@@ -7,7 +7,7 @@ import { NameObject } from 'src/app/interfaces/name-object';
   providedIn: 'root'
 })
 export class DataServiceService {
-  private url = 'https://api.agify.io?me=';
+  private url = 'https://api.agify.io?name=';
 
   constructor(private http: HttpClient,) { }
 
@@ -28,7 +28,7 @@ export class DataServiceService {
       console.error(
         `Received an error with code ${error.status}, \n`, error.error);
       const errMessage = JSON.stringify(error.error.error);
-      alert('Error: \n' + errMessage);
+      alert(`${error.status}` + ' Error: \n' + errMessage);
     }
   }
 }
