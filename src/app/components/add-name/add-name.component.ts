@@ -11,6 +11,7 @@ import { DataServiceService } from 'src/app/services/data-service.service';
 })
 export class AddNameComponent implements OnInit {
   @Output() newNameEvent = new EventEmitter<NameObject>();
+  private specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
   public nameInput = '';
   public addedNameObject: NameObject = {
     name: '',
@@ -34,10 +35,9 @@ export class AddNameComponent implements OnInit {
     }
   }
   private nameValidator(name: string): boolean {
-    const specialChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
     if (name === '') {
       alert('Please enter a name.');
-    } else if (name.length < 2 || /\d/.test(name) || specialChars.test(name)) {
+    } else if (name.length < 2 || /\d/.test(name) || this.specialChars.test(name)) {
       alert('Please enter a valid name.');
     } else {
       return true;

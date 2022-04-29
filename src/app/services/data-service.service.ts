@@ -7,7 +7,7 @@ import { NameObject } from 'src/app/interfaces/name-object';
   providedIn: 'root'
 })
 export class DataServiceService {
-  private url = 'https://api.agify.io?name=';
+  private url = 'https://api.agify.io?me=';
 
   constructor(private http: HttpClient,) { }
 
@@ -20,14 +20,15 @@ export class DataServiceService {
         }));
   }
   private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
+    if (!navigator.onLine) {
+      alert('No Internet Connection');
+    } else if (error.status === 0) {
       console.error('An error occurred:', error.error);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
       console.error(
         `Received an error with code ${error.status}, \n`, error.error);
+      const errMessage = JSON.stringify(error.error.error);
+      alert('Error: \n' + errMessage);
     }
   }
 }
